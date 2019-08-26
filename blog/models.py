@@ -12,6 +12,19 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
+    def summary(self):
+        return self.body[:100]
+
+    def pub_date_pretty(self):
+        return self.pub_date.strftime('%b %e %Y')
+
+# like toString() in Java, so admin page reflects 
+# by title
+    def __str__(self):
+        return self.title
+
+
+
 # blog model create
 
 # add blog app to the settings
